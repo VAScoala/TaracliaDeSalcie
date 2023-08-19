@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
+    <title>Acasă - Gimnaziul Vasile Alecsandri din Taraclia de Salcie</title>
+</head>
+
+<body>
+    <header>
+        
+        <div class="container">
+            <img src="logo.png" alt="Logo Gimnaziul Nostru">
+            <nav class="navbar">
+                <div class="navbar-toggle" id="navbarToggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <ul class="navbar-menu" id="navbarMenu">
+                    <li class="underline"><a href="index.html">Acasă</a></li>
+                    <li class="underline"><a href="despre-scoala.html">Despre Școală</a></li>
+                    <li class="underline"><a href="istoric.html">Istoric</a></li>
+                    <li class="underline"><a href="echipa-didactica.html">Echipă Didactică</a></li>
+                    <li class="underline"><a href="noutati.html">Noutăți</a></li>
+                    <li class="underline"><a href="contact.html">Contact</a></li>
+                </ul>
+              
+            </nav>
+        </div>
+    </header>
+    <section id="acasa" class="section">
+        <div class="curtain"></div>
+         
+        <div class="container">
+            <h1>Bine ați venit la Gimnaziul Vasile Alecsandri din Taraclia de Salcie!</h1>
+            <div class="confetti-container"></div>
+            
+        </div>
+       
+        <div class="container">
+            <section id="bloc-1" class="section">
+                <div class="container">
+                    <h1>MISIUNEA</h1>
+                    <p>Școala noastră își propune să formeze personalitatea umană și să creeze prin educație șanse egale pentru toți copiii, indiferent de situația socio-materială și apartenența religioasă în vederea unei integrări armonioase în societate.</p>
+                </div>
+            </section>
+            <section id="bloc-2" class="section">
+                <div class="container">
+                    <h1>VIZIUNEA</h1>
+                    <p>Educăm copiii zilei de astăzi, pentru a fi activi în societatea zilei de mâine.</p>
+                    <p>Deviza școlii: Nu pentru școală,ci pentru viață învățăm! </p>
+                </div>
+                
+            </section>
+            <div class="container image-container">
+                <a href="https://mec.gov.md/"> <img src="adr1.jpg" alt="Imagine 1"></a>
+                <a href="https://mecc.gov.md/ro/content/inspectoratul-scolar-national"><img src="adr2.png" alt="Imagine 2"></a>
+                 <a href="https://sime.md/ords/f?p=201:1:13532294851371::::P_MENU:&cs=1RCvaHA_ZpAgIdwR_016_0yuJAGSRvYd_dCLOIxJc-fDKFM8kHZhdkRXUVeQI6CoBIyHsECQ19YtwQM_qmX9zKw"> <img src="adr3.jpg" alt="Imagine 3"></a>
+             </div>
+        </div>
+        
+    </section>
+
+    <footer>
+        <div class="designed-by">
+            <a href="https://www.facebook.com/adrian.gdn.1"><p>®Designed by Adrian Ghidion</p></a>
+         </div>
+        <div class="container">
+            <p>&copy; 2023 Gimnaziul Vasile Alecsandri din Taraclia de Salcie. Toate drepturile rezervate.</p>
+        </div>
+        <div class="social-bar">
+            <a href="https://www.facebook.com/100075368397641" class="social-icon"><img src="facebook.png" alt="Facebook"></a>
+            <a href="https://twitter.com/pagina-dvs" class="social-icon"><img src="youtube.png" alt="Youtube"></a>
+            <a href="https://www.instagram.com/pagina-dvs" class="social-icon"><img src="instagram.png" alt="Instagram"></a>
+            <!-- Adăugați alte butoane sociale aici -->
+        </div>
+        <div class="corner-image">
+            <a href="index.html"><img src="25.png" alt="Imagine"></a>
+        </div>
+    </footer>
+    <script>
+        const navbarToggle = document.getElementById('navbarToggle');
+        const navbarMenu = document.getElementById('navbarMenu');
+        const navbarItems = document.querySelectorAll('.navbar-menu li');
+        const underline = document.createElement('div');
+        underline.classList.add('underline');
+        navbarMenu.appendChild(underline);
+        
+        navbarItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                const rect = item.getBoundingClientRect();
+                const offsetX = rect.left - navbarMenu.getBoundingClientRect().left;
+                const width = rect.width;
+                underline.style.transform = `translateX(${offsetX}px) scaleX(${width})`;
+            });
+            item.addEventListener('mouseleave', () => {
+                underline.style.transform = 'translateX(-100%) scaleX(0)';
+            });
+        });
+
+        navbarToggle.addEventListener('click', () => {
+            navbarMenu.classList.toggle('active');
+        });
+        const navbar = document.querySelector('.navbar');
+  const threshold = 300; // Cât de mult să derulați în jos înainte ca meniul să înceapă să devină transparent
+  const maxOpacity = 2; // Opacitate maximă (meniul inițial negru)
+  const minOpacity = 0.5; // Opacitate minimă (meniul complet transparent)
+  
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.scrollY;
+    const opacity = Math.max(maxOpacity - (currentScroll / threshold), minOpacity);
+    navbar.style.backgroundColor = `rgba(0, 0, 0, ${opacity})`;
+  });
+  const image = document.querySelector('.corner-image img');
+  const footer = document.querySelector('footer');
+
+  // Setăm opacitatea inițială a imaginii
+  let imageOpacity = 1;
+
+  // Funcția care se activează la scroll
+  function handleScroll() {
+    const footerPosition = footer.getBoundingClientRect().top;
+    const imagePosition = image.getBoundingClientRect().top;
+
+    // Calculăm diferența dintre poziția imaginii și poziția footer-ului
+    const distance = footerPosition - imagePosition;
+
+    // Calculăm opacitatea în funcție de distanța dintre imagine și footer
+    // Opacitatea minimă (transparent) când imaginea ajunge la înălțimea footer-ului
+    // Opacitatea maximă (opacă) când imaginea se află în partea de sus a paginii
+    const opacity = Math.max(0, 1 - distance / 200);
+
+    // Setăm opacitatea imaginii
+    image.style.opacity = opacity;
+  }
+
+  // Ascultăm evenimentul de scroll și apelăm funcția de mai sus
+  window.addEventListener('scroll', handleScroll);
+  
+    </script>
+</body>
+</html>

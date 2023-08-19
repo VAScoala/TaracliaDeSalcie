@@ -1,0 +1,501 @@
+/* Stilizare generală */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+/* Stilizare antet */
+header {
+    background-color: #6c3d99;
+    color: #fff;
+    padding: 2vw 0;
+    text-align: center;
+    position: relative; /* Adăugăm poziționare relativă pentru a poziționa textul mai sus */
+}
+
+header img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3); /* Adăugați o umbră sub imagine */
+}
+
+/* Stilizare text "Bine ați venit" */
+#bun-venit {
+    font-size: 24px;
+    margin-top: -10px; /* Ajustați acest număr pentru a poziționa textul exact unde doriți */
+    color: #f881e4; /* Culoarea roz */
+}
+
+/* Stilizare linie sub antet */
+header::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 5px;
+    background-color: #9a08de; /* Culoarea violet */
+    border-radius: 0px 0px 20px 20px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+/* Stilizare subsol */
+footer {
+    background-color: #6c3d99;
+    color: #fff;
+    text-align: center;
+    padding: 1vw 0;
+    clear: both;
+    margin-top: -1vw; /* Reducem puțin marginea superioară pentru a acoperi zona albă dintre footer și fundalul transparent */
+    border-radius: 0;
+}
+
+/* Stilizare imagini sociale */
+.social-icon img {
+    width: 4vw;
+    height: auto;
+    margin: 0 10px;
+    transition: transform 0.3s ease;
+}
+
+.social-icon img:hover {
+    transform: scale(1.1);
+}
+
+/* Stilizare secțiune Misiune și Viziune */
+#bloc-1,
+#bloc-2 {
+    padding: 3% 10%;
+    border-radius: 50px;
+    transition: background-color 0.7s ease, transform 0.7s ease;
+    box-sizing: border-box;
+    text-align: center;
+    margin-top: 10px; /* Ajustați distanța față de "Bine ați venit" */
+    margin-bottom: 20px; /* Ajustați distanța între Misiune și Viziune */
+}
+
+#bloc-1:hover,
+#bloc-2:hover {
+    background-color: #f881e4;
+    border-radius: 50px;
+    transform: scale(1.05);
+}
+
+#bloc-1 h1,
+#bloc-2 h1 {
+    color: #120552;
+    font-size: 3vw;
+    margin-bottom: 2vw;
+}
+
+#bloc-1 p,
+#bloc-2 p {
+    font-size: 2vw;
+}
+
+/* Stilizare bara de meniuri */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #000; /* Culoare de fundal inițială neagră */
+    padding: 20px;
+    border-radius: 0px 0px 40px 40px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.6);
+    z-index: 100;
+    display: flex;
+    justify-content: center; /* Aliniere orizontală la mijloc */
+    transition: background-color 0.5s ease; /* Efect de tranziție pentru culoare de fundal */
+}
+
+/* Stilizare meniu */
+.navbar-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center; /* Aliniere verticală la mijloc */
+}
+
+.navbar-menu li {
+    margin-right: 20px;
+}
+
+.navbar-menu a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: Arial;
+    font-size: 20px;
+    padding: 8px;
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar-menu a:hover {
+    color: #6c3d99;
+}
+
+/* Stilizare meniu responsiv */
+@media (max-width: 368px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        border-radius: 15px;
+    }
+
+    .navbar-toggle {
+        display: block;
+    }
+
+    .navbar-menu {
+        display: flex;
+        flex-direction: column;
+        background-color: #9a08de;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        z-index: 1;
+        border-top: 20px solid #6c3d99;
+        border-radius: 15px; /* Menține colțurile rotunde pentru meniul responsiv */
+    }
+
+    .navbar-menu.active {
+        display: flex;
+    }
+
+    .navbar-menu li {
+        margin-right: 20px;
+        display: flex; /* Folosim flexbox pentru a centra conținutul fiecărui element al meniului */
+        align-items: center; /* Aliniem conținutul vertical la mijloc */
+    }
+
+    .navbar-menu a {
+        font-size: 16px;
+        padding: 10px;
+    }
+}
+.underline a {
+    position: relative;
+    display: inline-block;
+}
+
+.underline a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #6c3d99;
+    transition: width 0.3s ease;
+}
+
+.underline a:hover::after {
+    width: 100%;
+}
+/* Stilizare text */
+/* Stilizare text */
+h1 {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    transition: color 0.3s ease, font-size 0.3s ease;
+    font-size: 40px;
+    color: #0da4ef; /* Culoare albă pentru text */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Efect de umbră subtilă pentru un aspect mai rafinat */
+}
+
+/* Stilizare text la hover */
+h1:hover {
+    color: #48bcff; /* Culoare roz pentru text la hover */
+    cursor: pointer;
+    font-size: 50px;
+    text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.9); /* Efect de umbră mai pronunțată la hover */
+}
+
+
+    #acasa {
+        padding: 20vh 0; /* Ajustați paddingul pentru a potrivi înălțimea fundalului */
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+}
+
+/* Stilizare curtain (fundal transparent) */
+.curtain {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent 0%, rgba(229, 38, 127, 0.5) 100%);
+    pointer-events: none;
+}
+.image-container {
+    display: flex;
+    justify-content: space-around; /* Așezați imaginile în jurul centrului */
+    align-items: center; /* Alineați vertical la mijloc */
+    margin-top: 10px; /* Adăugați un spațiu între text și imagini */
+}
+
+.image-container img {
+    max-width: 80%; /* Ajustați lățimea imaginilor */
+    height: auto;
+    border-radius: 30px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.7);
+    transition: transform 0.7s ease;
+    margin-top: 20px; /* Ajustați distanța față de "Bine ați venit" */
+    margin-bottom: 20px; /* Ajustați distanța între Misiune și Viziune */
+}
+
+.image-container img:hover {
+    transform: scale(1.3);
+}
+body {
+    margin-top: 0;
+}
+
+#acasa {
+    padding: 1vh 0; /* Ajustați paddingul pentru a menține aspectul */
+}
+
+header img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 1.3s ease;
+}
+
+/* Efecte la hover pentru imaginea din antet */
+header img:hover {
+    transform: scaleX(1.2); /* Lărgire doar pe axa orizontală */
+    opacity: 1;
+}
+/* Stilizare pentru formularul de contact */
+/* Stilizare formular de contact */
+/* Stilizare câmpuri de formular */
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s; /* Adăugăm efecte de tranziție */
+}
+
+/* Stilizare câmpuri la focus */
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
+.contact-form textarea:focus {
+    border-color: #9a08de;
+    box-shadow: 0px 0px 10px rgba(154, 8, 222, 0.5); /* Adăugăm o umbră mai subțire la focus */
+}
+
+/* Stilizare etichetă pentru câmpul de formular */
+.contact-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #6c3d99;
+    transition: color 0.3s; /* Adăugăm efect de tranziție pentru culoare */
+}
+
+/* Stilizare etichetă la focus */
+.contact-form input[type="text"]:focus + label,
+.contact-form input[type="email"]:focus + label,
+.contact-form textarea:focus + label {
+    color: #9a08de;
+}
+
+/* Stilizare text sugestiv pentru câmpurile de formular */
+.contact-form input[type="text"]:focus + label::after,
+.contact-form input[type="email"]:focus + label::after,
+.contact-form textarea:focus + label::after {
+   
+    display: block;
+    color: #999;
+    font-size: 14px;
+    margin-top: 5px;
+    transition: font-size 0.3s; /* Adăugăm efect de tranziție pentru dimensiunea fontului */
+}
+
+/* Mărirea fontului textului sugestiv la focus */
+.contact-form input[type="text"]:focus + label::after,
+.contact-form input[type="email"]:focus + label::after,
+.contact-form textarea:focus + label::after {
+    font-size: 12px;
+}
+/* Stilizare buton de trimitere */
+.contact-form button[type="submit"] {
+    background-color: #6c3d99;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.7);
+}
+
+/* Stilizare buton la hover */
+.contact-form button[type="submit"]:hover {
+    background-color: #14f32e;
+    transform: translateY(-2px); /* Ușoară ridicare la hover */
+}
+.contact-heading {
+    font-size: 50px;
+    text-align: center;
+    font-weight: Arial;
+    position: relative;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+    color: #6c3d99; 
+}
+
+.contact-heading::before {
+    content: 'Ești gata să ne Contactezi?';
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.contact-heading:hover {
+    color: #f881e4;
+}
+
+.contact-heading:hover::before {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Alt stil pentru butoanele sociale */
+.social-icon img {
+    width: 4vw;
+    height: auto;
+    margin: 0 10px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.social-icon img:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+}
+.designed-by a{
+    font-weight: bold;
+    font-style: italic;
+    font-size: 10px;
+    color: #999;
+    opacity: 40%;
+    display: block;
+    content: "";
+    text-decoration: none;
+
+}
+@media (max-width: 768px) {
+    /* ... stiluri pentru meniu responsiv ... */
+}
+
+/* Stilizare text */
+/* ... stilurile existente pentru text ... */
+
+/* Stilizare fundal pagină Acasă pentru telefon */
+@media (max-width: 768px) {
+    #acasa {
+        padding: 15vh 0; /* Ajustați paddingul pentru a menține aspectul */
+    }
+}
+
+/* Stilizare formular de contact pentru telefon */
+@media (max-width: 768px) {
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form textarea {
+        padding: 10px;
+        margin-bottom: 15px;
+    }
+
+    .contact-form button[type="submit"] {
+        padding: 12px 25px;
+        font-size: 16px;
+    }
+
+    .contact-heading {
+        font-size: 30px;
+    }
+}
+
+/* ... restul stilurilor ... */
+
+/* Stilizare secțiune contact pentru telefon */
+@media (max-width: 768px) {
+    .contact-section::before,
+    .contact-section::after {
+        height: 5px; /* Înălțimea border-ului */
+    }
+}
+.image-gallery {
+    margin-top: 20px;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.gallery img {
+    max-width: 30%;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.gallery img:hover {
+    transform: scale(1.1);
+}
+.corner-image {
+position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 280px; /* Lățimea imaginii */
+    height: 140px; /* Înălțimea imaginii */
+    transition: transform 1s; /* Tranzitie pentru mărirea imaginii */
+    opacity: 1; /* Opacitate inițială - imagine complet vizibilă */
+
+}
+
+.corner-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.corner-image:hover {
+    transform: scale(1.2); /* Mărirea imaginii când plasezi cursorul deasupra imaginii */
+}

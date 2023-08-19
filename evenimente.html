@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Evenimente - Gimnaziul Vasile Alecsandri din Taraclia de Salcie</title>
+</head>
+<body>
+    <!-- Repetați codul antetului din index.html -->
+    <header>
+        <div class="container">
+            <img src="logo.png" alt="Logo Gimnaziul Nostru">
+            <nav class="navbar">
+                <ul class="navbar-menu" id="navbarMenu">
+                    <li class="underline"><a href="index.html">Acasă</a></li>
+                    <li class="underline"><a href="despre-scoala.html">Despre Școală</a></li>
+                    <li class="underline"><a href="istoric.html">Istoric</a></li>
+                    <li class="underline"><a href="echipa-didactica.html">Echipă Didactică</a></li>
+                    <li class="underline"><a href="noutati.html">Noutăți</a></li>
+                    <li class="underline"><a href="evenimente.html">Evenimente</a></li>
+                    <li class="underline"><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section id="evenimente" class="section">
+        <div class="container">
+            <h2>Evenimente</h2>
+            <div class="events">
+                <!-- Aici puteți adăuga informații despre evenimente -->
+                <div class="event">
+                    <h3>Nume Eveniment 1</h3>
+                    <p>Data: 10 mai 2023</p>
+                    <p>Locație: Sala de festivități</p>
+                    <p>Descriere: Detalii despre evenimentul 1...</p>
+                </div>
+                <div class="event">
+                    <h3>Nume Eveniment 2</h3>
+                    <p>Data: 15 iunie 2023</p>
+                    <p>Locație: Curtea școlii</p>
+                    <p>Descriere: Detalii despre evenimentul 2...</p>
+                </div>
+                <!-- Repetați pentru mai multe evenimente -->
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="designed-by">
+            <a href="https://www.facebook.com/adrian.gdn.1"><p>®Designed by Adrian Ghidion</p></a>
+         </div>
+        <div class="container">
+            <p>&copy; 2023 Gimnaziul Vasile Alecsandri din Taraclia de Salcie. Toate drepturile rezervate.</p>
+        </div>
+        <div class="social-bar">
+            <a href="https://www.facebook.com/100075368397641" class="social-icon"><img src="facebook.png" alt="Facebook"></a>
+            <a href="https://twitter.com/pagina-dvs" class="social-icon"><img src="youtube.png" alt="Youtube"></a>
+            <a href="https://www.instagram.com/pagina-dvs" class="social-icon"><img src="instagram.png" alt="Instagram"></a>
+            <!-- Adăugați alte butoane sociale aici -->
+        </div>
+        <div class="corner-image">
+            <a href="index.html"><img src="25.png" alt="Imagine"></a>
+        </div>
+    </footer>
+    <script>
+        const navbarMenu = document.getElementById('navbarMenu');
+        const navbarItems = document.querySelectorAll('.navbar-menu li');
+        const underline = document.createElement('div');
+        underline.classList.add('underline');
+        navbarMenu.appendChild(underline);
+
+        navbarItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                const rect = item.getBoundingClientRect();
+                const offsetX = rect.left - navbarMenu.getBoundingClientRect().left;
+                const width = rect.width;
+                underline.style.transform = `translateX(${offsetX}px) scaleX(${width})`;
+            });
+            item.addEventListener('mouseleave', () => {
+                underline.style.transform = 'translateX(-100%) scaleX(0)';
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            const threshold = 300;
+            const maxOpacity = 1;
+            const minOpacity = 0.5;
+            const currentScroll = window.scrollY;
+            const opacity = Math.max(maxOpacity - (currentScroll / threshold), minOpacity);
+            navbar.style.backgroundColor = `rgba(0, 0, 0, ${opacity})`;
+        });
+        const image = document.querySelector('.corner-image img');
+  const footer = document.querySelector('footer');
+
+  // Setăm opacitatea inițială a imaginii
+  let imageOpacity = 1;
+
+  // Funcția care se activează la scroll
+  function handleScroll() {
+    const footerPosition = footer.getBoundingClientRect().top;
+    const imagePosition = image.getBoundingClientRect().top;
+
+    // Calculăm diferența dintre poziția imaginii și poziția footer-ului
+    const distance = footerPosition - imagePosition;
+
+    // Calculăm opacitatea în funcție de distanța dintre imagine și footer
+    // Opacitatea minimă (transparent) când imaginea ajunge la înălțimea footer-ului
+    // Opacitatea maximă (opacă) când imaginea se află în partea de sus a paginii
+    const opacity = Math.max(0, 1 - distance / 100);
+
+    // Setăm opacitatea imaginii
+    image.style.opacity = opacity;
+  }
+
+  // Ascultăm evenimentul de scroll și apelăm funcția de mai sus
+  window.addEventListener('scroll', handleScroll);
+    </script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Contact - Gimnaziul Vasile Alecsandri din Taraclia de Salcie</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img src="logo.png" alt="Logo Gimnaziul Nostru">
+            <nav class="navbar">
+                <div class="navbar-toggle" id="navbarToggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <ul class="navbar-menu" id="navbarMenu">
+                    <li class="underline"><a href="index.html">Acasă</a></li>
+                    <li class="underline"><a href="despre-scoala.html">Despre Școală</a></li>
+                    <li class="underline"><a href="istoric.html">Istoric</a></li>
+                    <li class="underline"><a href="echipa-didactica.html">Echipă Didactică</a></li>
+                    <li class="underline"><a href="noutati.html">Noutăți</a></li>
+                    <li class="underline"><a href="evenimente.html">Evenimente</a></li>
+                    <li class="underline"><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section id="contact" class="section contact-section">
+        
+        <div class="container">
+            <div class="container">
+                <!-- Logo și meniu ... -->
+                <h1 id="contact-heading" class="contact-heading">Contact</h1>
+            </div>
+            <address>
+                <p>Adresa: Str. Principală, Nr. 123, Orașul Nostru</p>
+                <p>Telefon: 123-456-7890</p>
+                <p>Email: contact@gimnaziulnostru.ro</p>
+            </address>
+            <form class="contact-form" action="process.php" method="post">
+                <label for="nume">Nume:</label>
+                <input type="text" id="nume" name="nume" required>
+            
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            
+                <label for="mesaj">Mesaj:</label>
+                <textarea id="mesaj" name="mesaj" rows="4" required></textarea>
+            
+                <button type="submit">Trimite</button>
+                <div id="message"></div>
+            </form>
+        </div>
+    </section>
+    <footer>
+        <div class="designed-by">
+            <a href="https://www.facebook.com/adrian.gdn.1"><p>®Designed by Adrian Ghidion</p></a>
+         </div>
+            <p>&copy; 2023 Gimnaziul Vasile Alecsandri din Taraclia de Salcie. Toate drepturile rezervate.</p>
+        </div>
+        
+        <div class="social-bar">
+            <a href="https://www.facebook.com/100075368397641" class="social-icon"><img src="facebook.png" alt="Facebook"></a>
+            <a href="https://twitter.com/pagina-dvs" class="social-icon"><img src="youtube.png" alt="Youtube"></a>
+            <a href="https://www.instagram.com/pagina-dvs" class="social-icon"><img src="instagram.png" alt="Instagram"></a>
+            <!-- Adăugați alte butoane sociale aici -->
+        </div>
+        <div class="corner-image">
+            <a href="index.html"><img src="25.png" alt="Imagine"></a>
+        </div>
+    </footer>
+    <script>
+        const navbarToggle = document.getElementById('navbarToggle');
+        const navbarMenu = document.getElementById('navbarMenu');
+        const navbarItems = document.querySelectorAll('.navbar-menu li');
+        const underline = document.createElement('div');
+        underline.classList.add('underline');
+        navbarMenu.appendChild(underline);
+        
+        navbarItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                const rect = item.getBoundingClientRect();
+                const offsetX = rect.left - navbarMenu.getBoundingClientRect().left;
+                const width = rect.width;
+                underline.style.transform = `translateX(${offsetX}px) scaleX(${width})`;
+            });
+            item.addEventListener('mouseleave', () => {
+                underline.style.transform = 'translateX(-100%) scaleX(0)';
+            });
+        });
+
+        navbarToggle.addEventListener('click', () => {
+            navbarMenu.classList.toggle('active');
+        });
+        
+        const navbar = document.querySelector('.navbar');
+        const threshold = 300;
+        const maxOpacity = 2;
+        const minOpacity = 0.5;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.scrollY;
+            const opacity = Math.max(maxOpacity - (currentScroll / threshold), minOpacity);
+            navbar.style.backgroundColor = `rgba(0, 0, 0, ${opacity})`;
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('.contact-form');
+    const messageDiv = document.getElementById('message');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const formData = new FormData(form);
+        const xhr = new XMLHttpRequest();
+
+        xhr.open('POST', 'process.php', true);
+        xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                messageDiv.innerHTML = xhr.responseText;
+            }
+        };
+
+        xhr.send(formData);
+    });
+});
+const image = document.querySelector('.corner-image img');
+  const footer = document.querySelector('footer');
+
+  // Setăm opacitatea inițială a imaginii
+  let imageOpacity = 1;
+
+  // Funcția care se activează la scroll
+  function handleScroll() {
+    const footerPosition = footer.getBoundingClientRect().top;
+    const imagePosition = image.getBoundingClientRect().top;
+
+    // Calculăm diferența dintre poziția imaginii și poziția footer-ului
+    const distance = footerPosition - imagePosition;
+
+    // Calculăm opacitatea în funcție de distanța dintre imagine și footer
+    // Opacitatea minimă (transparent) când imaginea ajunge la înălțimea footer-ului
+    // Opacitatea maximă (opacă) când imaginea se află în partea de sus a paginii
+    const opacity = Math.max(0, 1 - distance / 200);
+
+    // Setăm opacitatea imaginii
+    image.style.opacity = opacity;
+  }
+
+  // Ascultăm evenimentul de scroll și apelăm funcția de mai sus
+  window.addEventListener('scroll', handleScroll);
+    </script>
+</body>
+</html>
